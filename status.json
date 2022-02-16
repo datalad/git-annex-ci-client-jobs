@@ -1,0 +1,9 @@
+{
+    "ndoli": {
+        "highest_build": 0,
+        "tests": {
+            "git-annex-home": "unknown",
+            "git-annex-tmp": "unknown"
+        }
+    }
+}
