@@ -1,0 +1,48 @@
+name: Process result-* Branch
+
+on:
+  push:
+    branches:
+      - "result-*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Upload results
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ github.ref_name}}
+          path: '*'
+
+      - name: Switch to master
+        run: |
+          git fetch origin +refs/heads/master:refs/remotes/origin/master
+          git checkout master
+          git checkout ${{ github.ref_name }} -- '*.rc'
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '^3.8'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip wheel
+          python -m pip install --upgrade -r requirements.txt
+
+      - name: Update badges
+        run: |
+          python update.py ${{ github.ref_name }} *.rc
+          rm *.rc
+          git add status.json badges
+          if git diff --cached --quiet
+          then git commit -m 'Update for ${{ github.ref_name }}'
+               git push
+          else echo '[INFO] No changes to commit'
+          fi
+          git branch -D ${{ github.ref_name }}
+          git push origin :refs/heads/${{ github.ref_name }}
