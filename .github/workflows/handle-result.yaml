@@ -41,7 +41,7 @@ jobs:
           python update.py ${{ github.ref_name }} *.rc
           rm *.rc
           git add status.json badges
-          if git diff --cached --quiet
+          if ! git diff --cached --quiet
           then git commit -m 'Update for ${{ github.ref_name }}'
                git push
           else echo '[INFO] No changes to commit'
