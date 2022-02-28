@@ -20,8 +20,9 @@ jobs:
         with:
           name: ${{ github.ref_name}}
           path: |
-            '*.log'
-            '*.rc'
+            *.log
+            *.rc
+          if-no-files-found: error
 
       - name: Switch to master
         run: |
@@ -41,6 +42,9 @@ jobs:
 
       - name: Update badges
         run: |
+          git config --global user.email "github@nil.nil"
+          git config --global user.name "GitHub Actions"
+
           python update.py ${{ github.ref_name }} *.rc
           rm *.rc
           git add status.json badges
