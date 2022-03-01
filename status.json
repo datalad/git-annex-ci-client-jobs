@@ -5,5 +5,11 @@
             "git-annex-home": "failing",
             "git-annex-tmp": "failing"
         }
+    },
+    "smaug": {
+        "highest_build": 609,
+        "tests": {
+            "git-annex": "failing"
+        }
     }
 }
