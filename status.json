@@ -1,9 +1,9 @@
 {
     "ndoli": {
-        "highest_build": 906,
+        "highest_build": 907,
         "tests": {
             "git-annex-home": "passing",
-            "git-annex-tmp": "passing"
+            "git-annex-tmp": "failing"
         }
     },
     "smaug": {
