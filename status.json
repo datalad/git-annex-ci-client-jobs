@@ -1,6 +1,6 @@
 {
     "ndoli": {
-        "highest_build": 951,
+        "highest_build": 952,
         "tests": {
             "git-annex-home": "passing",
             "git-annex-tmp": "passing"
