@@ -11,5 +11,12 @@
         "tests": {
             "git-annex": "passing"
         }
+    },
+    "openmind7": {
+        "highest_build": 1010,
+        "tests": {
+            "git-annex-home": "failing",
+            "git-annex-om2": "failing"
+        }
     }
 }
