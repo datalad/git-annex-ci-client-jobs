@@ -33,6 +33,16 @@ class ClientStatus(BaseModel):
     highest_build: int
     tests: Dict[str, Status]
 
+    def get_status(self) -> Status:
+        status = Status.UNKNOWN
+        for st in self.tests.values():
+            if st is Status.PASSING:
+                status = st
+            elif st is Status.FAILING:
+                status = st
+                break
+        return st
+
 
 @click.command()
 @click.argument("result_branch")
@@ -70,14 +80,23 @@ def main(result_branch: str, rcfiles: Tuple[Path, ...]) -> None:
     with STATUS_FILE.open("w") as fp:
         json.dump(status, fp, indent=4, default=default_json)
         print(file=fp)
-    client_status = Status.UNKNOWN
-    for st in client.tests.values():
+    client_status = client.get_status()
+    global_status = Status.UNKNOWN
+    for cl in status.values():
+        st = cl.get_status()
         if st is Status.PASSING:
-            client_status = st
+            global_status = st
         elif st is Status.FAILING:
-            client_status = st
+            global_status = st
             break
     with requests.Session() as s:
+        download_badge(
+            s,
+            BADGE_DIR / f".all-clients.svg",
+            "Tests on Clients",
+            global_status.value,
+            status_colors[global_status],
+        )
         download_badge(
             s,
             BADGE_DIR / f"{clientid}.svg",
