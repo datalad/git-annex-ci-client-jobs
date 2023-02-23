@@ -92,7 +92,7 @@ def main(result_branch: str, rcfiles: Tuple[Path, ...]) -> None:
     with requests.Session() as s:
         download_badge(
             s,
-            BADGE_DIR / f".all-clients.svg",
+            BADGE_DIR / ".all-clients.svg",
             "Tests on Clients",
             global_status.value,
             status_colors[global_status],
