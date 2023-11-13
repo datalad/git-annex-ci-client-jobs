@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
+from __future__ import annotations
 from enum import Enum
 import json
 from pathlib import Path
 import re
-from typing import Any, Dict, Tuple
+from typing import Dict
 import click
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 import requests
 
 BADGE_DIR = Path(__file__).with_name("badges")
@@ -21,12 +22,16 @@ class Status(Enum):
     def from_rc(cls, rc: int) -> "Status":
         return cls.PASSING if rc == 0 else cls.FAILING
 
-
-status_colors = {
-    Status.PASSING: "success",
-    Status.FAILING: "critical",
-    Status.UNKNOWN: "inactive",
-}
+    @property
+    def color(self) -> str:
+        if self is Status.PASSING:
+            return "success"
+        elif self is Status.FAILING:
+            return "critical"
+        elif self is Status.UNKNOWN:
+            return "inactive"
+        else:
+            raise AssertionError(f"Unhandled Status member: {self!r}")
 
 
 class ClientStatus(BaseModel):
@@ -41,7 +46,7 @@ class ClientStatus(BaseModel):
             elif st is Status.FAILING:
                 status = st
                 break
-        return st
+        return status
 
 
 @click.command()
@@ -49,7 +54,7 @@ class ClientStatus(BaseModel):
 @click.argument(
     "rcfiles", nargs=-1, type=click.Path(exists=True, dir_okay=False, path_type=Path)
 )
-def main(result_branch: str, rcfiles: Tuple[Path, ...]) -> None:
+def main(result_branch: str, rcfiles: tuple[Path, ...]) -> None:
     m = re.fullmatch(r"result-(.+)-(\d+)", result_branch)
     if not m:
         raise ValueError(f"Invalid result branch name: {result_branch!r}")
@@ -58,7 +63,8 @@ def main(result_branch: str, rcfiles: Tuple[Path, ...]) -> None:
     rcs = {f.stem: int(f.read_text()) for f in rcfiles}
     with STATUS_FILE.open() as fp:
         data = json.load(fp)
-    status = parse_obj_as(Dict[str, ClientStatus], data)
+    adapter = TypeAdapter(Dict[str, ClientStatus])
+    status = adapter.validate_python(data)
     try:
         client = status[clientid]
     except KeyError:
@@ -78,8 +84,7 @@ def main(result_branch: str, rcfiles: Tuple[Path, ...]) -> None:
         for test in unupdated:
             client.tests[test] = Status.UNKNOWN
     with STATUS_FILE.open("w") as fp:
-        json.dump(status, fp, indent=4, default=default_json)
-        print(file=fp)
+        print(adapter.dump_json(status, indent=4))
     client_status = client.get_status()
     global_status = Status.UNKNOWN
     for cl in status.values():
@@ -95,14 +100,14 @@ def main(result_branch: str, rcfiles: Tuple[Path, ...]) -> None:
             BADGE_DIR / ".all-clients.svg",
             "Tests on Clients",
             global_status.value,
-            status_colors[global_status],
+            global_status.color,
         )
         download_badge(
             s,
             BADGE_DIR / f"{clientid}.svg",
             "Tests",
             client_status.value,
-            status_colors[client_status],
+            client_status.color,
         )
         for test, st in client.tests.items():
             download_badge(
@@ -110,7 +115,7 @@ def main(result_branch: str, rcfiles: Tuple[Path, ...]) -> None:
                 BADGE_DIR / clientid / f"{test}.svg",
                 test,
                 st.value,
-                status_colors[st],
+                st.color,
             )
 
 
@@ -124,15 +129,6 @@ def download_badge(
     r.raise_for_status()
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(r.content)
-
-
-def default_json(obj: Any) -> Any:
-    if isinstance(obj, BaseModel):
-        return obj.dict()
-    elif isinstance(obj, Enum):
-        return obj.value
-    else:
-        return obj
 
 
 if __name__ == "__main__":
