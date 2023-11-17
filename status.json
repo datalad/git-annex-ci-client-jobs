@@ -1,0 +1,22 @@
+{
+    "ndoli": {
+        "highest_build": 1313,
+        "tests": {
+            "git-annex-home": "passing",
+            "git-annex-tmp": "passing"
+        }
+    },
+    "smaug": {
+        "highest_build": 1313,
+        "tests": {
+            "git-annex": "passing"
+        }
+    },
+    "openmind7": {
+        "highest_build": 1301,
+        "tests": {
+            "git-annex-home": "passing",
+            "git-annex-om2": "passing"
+        }
+    }
+}
