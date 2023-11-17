@@ -83,8 +83,8 @@ def main(result_branch: str, rcfiles: tuple[Path, ...]) -> None:
             unupdated.discard(test)
         for test in unupdated:
             client.tests[test] = Status.UNKNOWN
-    with STATUS_FILE.open("w") as fp:
-        print(adapter.dump_json(status, indent=4))
+    with STATUS_FILE.open("wb") as fp:
+        print(adapter.dump_json(status, indent=4), file=fp)
     client_status = client.get_status()
     global_status = Status.UNKNOWN
     for cl in status.values():
