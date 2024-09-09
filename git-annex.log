@@ -1,0 +1,1357 @@
++ source testlib.sh
++ workdir_base /mnt/datasets/datalad/git-annex-build-client
++ WORKDIR_BASE=/mnt/datasets/datalad/git-annex-build-client
++ mkdir -p /mnt/datasets/datalad/git-annex-build-client/1638
++ SECONDS=0
++ trap 'echo "Elapsed time: $SECONDS seconds" && cd "$WORKDIR_BASE" && chmod -R +w "$BUILDNO" && rm -rf "$BUILDNO"' EXIT
++ cd /mnt/datasets/datalad/git-annex-build-client/1638
++ git annex version
+git-annex version: 10.20240831+git22-g578abf7b89-1~ndall+1
+build flags: Assistant Webapp Pairing Inotify DBus DesktopNotify TorrentParser MagicMime Benchmark Feeds Testsuite S3 WebDAV
+dependency versions: aws-0.22.1 bloomfilter-2.0.1.0 cryptonite-0.29 DAV-1.3.4 feed-1.3.2.1 ghc-9.0.2 http-client-0.7.13.1 persistent-sqlite-2.13.1.0 torrent-10000.1.1 uuid-1.3.15 yesod-1.6.2.1
+key/value backends: SHA256E SHA256 SHA512E SHA512 SHA224E SHA224 SHA384E SHA384 SHA3_256E SHA3_256 SHA3_512E SHA3_512 SHA3_224E SHA3_224 SHA3_384E SHA3_384 SKEIN256E SKEIN256 SKEIN512E SKEIN512 BLAKE2B256E BLAKE2B256 BLAKE2B512E BLAKE2B512 BLAKE2B160E BLAKE2B160 BLAKE2B224E BLAKE2B224 BLAKE2B384E BLAKE2B384 BLAKE2BP512E BLAKE2BP512 BLAKE2S256E BLAKE2S256 BLAKE2S160E BLAKE2S160 BLAKE2S224E BLAKE2S224 BLAKE2SP256E BLAKE2SP256 BLAKE2SP224E BLAKE2SP224 SHA1E SHA1 MD5E MD5 WORM URL GITBUNDLE GITMANIFEST VURL X*
+remote types: git gcrypt p2p S3 bup directory rsync web bittorrent webdav adb tahoe glacier ddar git-lfs httpalso borg rclone hook external
+operating system: linux x86_64
+supported repository versions: 8 9 10
+upgrade supported from repository versions: 0 1 2 3 4 5 6 7 8 9 10
++ timeout 3600 git annex test -J5
++ ts -s
+00:00:00 Tests
+00:00:00   QuickCheck
+00:00:00     prop_quote_unquote_roundtrip:            OK (0.03s)
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_encode_c_decode_c_roundtrip:        OK (0.01s)
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_isomorphic_key_encode:              OK (0.01s)
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_isomorphic_shellEscape:             OK
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_isomorphic_shellEscape_multiword:   OK (0.34s)
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_isomorphic_configEscape:            OK
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_parse_show_Config:                  OK (0.02s)
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_upFrom_basics:                      OK
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_relPathDirToFileAbs_basics:         OK
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_relPathDirToFileAbs_regressionTest: OK
+00:00:00       +++ OK, passed 1 test.
+00:00:00     prop_dirContains_regressionTest:         OK
+00:00:00       +++ OK, passed 1 test.
+00:00:00     prop_cost_sane:                          OK
+00:00:00       +++ OK, passed 1 test.
+00:00:00     prop_matcher_sane:                       OK
+00:00:00       +++ OK, passed 1 test.
+00:00:00     prop_HmacSha1WithCipher_sane:            OK
+00:00:00       +++ OK, passed 1 test.
+00:00:00     prop_VectorClock_sane:                   OK
+00:00:00       +++ OK, passed 1 test.
+00:00:00     prop_addMapLog_sane:                     OK
+00:00:00       +++ OK, passed 1 test.
+00:00:00     prop_verifiable_sane:                    OK (0.04s)
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_segment_regressionTest:             OK
+00:00:00       +++ OK, passed 1 test.
+00:00:00     prop_read_write_transferinfo:            OK (0.02s)
+00:00:00       +++ OK, passed 1000 tests.
+00:00:00     prop_read_show_inodecache:               OK
+00:00:00       +++ OK, passed 1000 tests.
+00:00:01     prop_parse_build_presence_log:           OK (0.49s)
+00:00:01       +++ OK, passed 1000 tests.
+00:00:01     prop_parse_build_contentidentifier_log:  OK (0.39s)
+00:00:01       +++ OK, passed 1000 tests.
+00:00:01     prop_read_show_TrustLevel:               OK
+00:00:01       +++ OK, passed 1 test.
+00:00:01     prop_parse_build_TrustLevelLog:          OK
+00:00:01       +++ OK, passed 1 test.
+00:00:01     prop_schedule_roundtrips:                OK
+00:00:01       +++ OK, passed 1000 tests.
+00:00:01     prop_past_sane:                          OK
+00:00:01       +++ OK, passed 1 test.
+00:00:01     prop_duration_roundtrips:                OK
+00:00:01       +++ OK, passed 1000 tests.
+00:00:02     prop_metadata_sane:                      OK (0.23s)
+00:00:02       +++ OK, passed 1000 tests.
+00:00:02     prop_metadata_serialize:                 OK (0.25s)
+00:00:02       +++ OK, passed 1000 tests.
+00:00:02     prop_branchView_legal:                   OK (0.25s)
+00:00:02       +++ OK, passed 1000 tests.
+00:00:02     prop_viewPath_roundtrips:                OK
+00:00:02       +++ OK, passed 1000 tests.
+00:00:02     prop_view_roundtrips:                    OK (0.10s)
+00:00:02       +++ OK, passed 1000 tests.
+00:00:02     prop_viewedFile_rountrips:               OK
+00:00:02       +++ OK, passed 1000 tests.
+00:00:02     prop_standardGroups_parse:               OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     prop_balanced_stable:                    OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     sha1 stable:                             OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     sha2_224 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     sha2_256 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     sha2_384 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     sha2_512 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     skein256 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     skein512 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     sha3_224 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     sha3_256 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     sha3_384 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     sha3_512 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2s_160 stable:                      OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2s_224 stable:                      OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2s_256 stable:                      OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2sp_224 stable:                     OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2sp_256 stable:                     OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2b_160 stable:                      OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2b_224 stable:                      OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2b_256 stable:                      OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2b_384 stable:                      OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2b_512 stable:                      OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     blake2bp_512 stable:                     OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     md5 stable:                              OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     HmacSha1 stable:                         OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     HmacSha224 stable:                       OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     HmacSha256 stable:                       OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     HmacSha384 stable:                       OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02     HmacSha512 stable:                       OK
+00:00:02       +++ OK, passed 1 test.
+00:00:02 
+00:00:02 All 63 tests passed (2.29s)
+00:00:02 Tests
+00:00:02   Repo Tests v10 adjusted unlocked branch
+00:00:02     Init Tests
+00:00:06       init:                                OK (5.93s)
+00:00:10       add:                                 OK (3.67s)
+00:00:17     rsync remote:                          OK (7.89s)
+00:01:05     conflict resolution (nonannexed file): OK (47.90s)
+00:01:38     adjusted branch merge regression:      OK (33.03s)
+00:01:50     migrate (via gitattributes):           OK (11.82s)
+00:01:52     fix:                                   OK (1.55s)
+00:01:58     get (ssh remote):                      OK (6.70s)
+00:02:06     view:                                  OK (7.14s)
+00:02:11     add dup:                               OK (5.82s)
+00:02:11 
+00:02:11 All 10 tests passed (131.45s)
+00:02:11 Tests
+00:02:11   Remote Tests
+00:02:11     testremote type git
+00:02:11       init:                                              OK (7.79s)
+00:02:11       unavailable remote
+00:02:11         removeKey:                                       OK (0.02s)
+00:02:11         storeKey:                                        OK (0.02s)
+00:02:11         checkPresent:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.02s)
+00:02:11         retrieveKeyFileCheap:                            OK (0.02s)
+00:02:11       key size 1048576; git remote
+00:02:11         removeKey when not present:                      OK (0.02s)
+00:02:11         present False:                                   OK (0.02s)
+00:02:11         storeKey:                                        OK (1.05s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.09s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.09s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.15s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.10s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.02s)
+00:02:11         present False:                                   OK (0.02s)
+00:02:11       key size 1048577; git remote
+00:02:11         removeKey when not present:                      OK (0.02s)
+00:02:11         present False:                                   OK (0.02s)
+00:02:11         storeKey:                                        OK (0.21s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.08s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.07s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         removeKey when present:                          OK (0.02s)
+00:02:11         present False:                                   OK (0.02s)
+00:02:11       key size 1048575; git remote
+00:02:11         removeKey when not present:                      OK (0.02s)
+00:02:11         present False:                                   OK (0.02s)
+00:02:11         storeKey:                                        OK (0.19s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.12s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.15s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.02s)
+00:02:11         present False:                                   OK (0.02s)
+00:02:11       key size 2097152; git remote
+00:02:11         removeKey when not present:                      OK (0.02s)
+00:02:11         present False:                                   OK (0.02s)
+00:02:11         storeKey:                                        OK (0.24s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.12s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.08s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.10s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         removeKey when present:                          OK (0.03s)
+00:02:11         present False:                                   OK (0.02s)
+00:02:11       exporttree=yes; key size 1048576; key size 2097152
+00:02:11         check present export when not present:           OK (0.03s)
+00:02:11         remove export when not present:                  OK (0.02s)
+00:02:11         store export:                                    OK (0.02s)
+00:02:11         check present export after store:                OK (0.02s)
+00:02:11         store export when already present:               OK (0.02s)
+00:02:11         retrieve export:                                 OK (0.02s)
+00:02:11         store new content to export:                     OK (0.02s)
+00:02:11         check present export after store of new content: OK (0.02s)
+00:02:11         retrieve export new content:                     OK (0.02s)
+00:02:11         remove export:                                   OK (0.02s)
+00:02:11         check present export after remove:               OK (0.02s)
+00:02:11         retrieve export fails after removal:             OK (0.02s)
+00:02:11         remove export directory:                         OK (0.02s)
+00:02:11         remove export directory that is already removed: OK (0.02s)
+00:02:11       exporttree=yes; key size 1048576; key size 1048575
+00:02:11         check present export when not present:           OK (0.02s)
+00:02:11         remove export when not present:                  OK (0.02s)
+00:02:11         store export:                                    OK (0.02s)
+00:02:11         check present export after store:                OK (0.02s)
+00:02:11         store export when already present:               OK (0.02s)
+00:02:11         retrieve export:                                 OK (0.02s)
+00:02:11         store new content to export:                     OK (0.02s)
+00:02:11         check present export after store of new content: OK (0.02s)
+00:02:11         retrieve export new content:                     OK (0.02s)
+00:02:11         remove export:                                   OK (0.02s)
+00:02:11         check present export after remove:               OK (0.02s)
+00:02:11         retrieve export fails after removal:             OK (0.01s)
+00:02:11         remove export directory:                         OK (0.02s)
+00:02:11         remove export directory that is already removed: OK (0.02s)
+00:02:11       exporttree=yes; key size 1048577; key size 2097152
+00:02:11         check present export when not present:           OK (0.02s)
+00:02:11         remove export when not present:                  OK (0.02s)
+00:02:11         store export:                                    OK (0.02s)
+00:02:11         check present export after store:                OK (0.02s)
+00:02:11         store export when already present:               OK (0.02s)
+00:02:11         retrieve export:                                 OK (0.02s)
+00:02:11         store new content to export:                     OK (0.02s)
+00:02:11         check present export after store of new content: OK (0.02s)
+00:02:11         retrieve export new content:                     OK (0.03s)
+00:02:11         remove export:                                   OK (0.02s)
+00:02:11         check present export after remove:               OK (0.02s)
+00:02:11         retrieve export fails after removal:             OK (0.02s)
+00:02:11         remove export directory:                         OK (0.02s)
+00:02:11         remove export directory that is already removed: OK (0.02s)
+00:02:11       exporttree=yes; key size 1048577; key size 1048575
+00:02:11         check present export when not present:           OK (0.02s)
+00:02:11         remove export when not present:                  OK (0.02s)
+00:02:11         store export:                                    OK (0.02s)
+00:02:11         check present export after store:                OK (0.02s)
+00:02:11         store export when already present:               OK (0.02s)
+00:02:11         retrieve export:                                 OK (0.02s)
+00:02:11         store new content to export:                     OK (0.02s)
+00:02:11         check present export after store of new content: OK (0.02s)
+00:02:11         retrieve export new content:                     OK (0.02s)
+00:02:11         remove export:                                   OK (0.02s)
+00:02:11         check present export after remove:               OK (0.02s)
+00:02:11         retrieve export fails after removal:             OK (0.03s)
+00:02:11         remove export directory:                         OK (0.02s)
+00:02:11         remove export directory that is already removed: OK (0.02s)
+00:02:11     testremote type directory
+00:02:11       init:                                              OK (3.19s)
+00:02:11       unavailable remote
+00:02:11         removeKey:                                       OK (0.08s)
+00:02:11         storeKey:                                        OK (0.02s)
+00:02:11         checkPresent:                                    OK (0.07s)
+00:02:11         retrieveKeyFile:                                 OK (0.08s)
+00:02:11         retrieveKeyFileCheap:                            OK (0.02s)
+00:02:11       key size 1048576; directory remote chunksize=0 encryption=none
+00:02:11         removeKey when not present:                      OK (0.07s)
+00:02:11         present False:                                   OK (0.07s)
+00:02:11         storeKey:                                        OK (0.09s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.09s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.07s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.07s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.17s)
+00:02:11         present False:                                   OK (0.10s)
+00:02:11       key size 1048576; directory remote chunksize=0 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.09s)
+00:02:11         present False:                                   OK (0.08s)
+00:02:11         storeKey:                                        OK (0.03s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.09s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.09s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.09s)
+00:02:11         present False:                                   OK (0.09s)
+00:02:11       key size 1048576; directory remote chunksize=10485 encryption=none
+00:02:11         removeKey when not present:                      OK (0.10s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11         storeKey:                                        OK (3.44s)
+00:02:11         present True:                                    OK (0.19s)
+00:02:11         storeKey when already present:                   OK (0.05s)
+00:02:11         present True:                                    OK (0.19s)
+00:02:11         retrieveKeyFile:                                 OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.16s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.18s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.23s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.11s)
+00:02:11         present False:                                   OK (0.18s)
+00:02:11       key size 1048576; directory remote chunksize=10485 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.13s)
+00:02:11         present False:                                   OK (0.20s)
+00:02:11         storeKey:                                        OK (3.06s)
+00:02:11         present True:                                    OK (0.17s)
+00:02:11         storeKey when already present:                   OK (0.04s)
+00:02:11         present True:                                    OK (0.16s)
+00:02:11         retrieveKeyFile:                                 OK (0.17s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.16s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.12s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.09s)
+00:02:11         present False:                                   OK (0.13s)
+00:02:11       key size 1048576; directory remote chunksize=1048 encryption=none
+00:02:11         removeKey when not present:                      OK (0.14s)
+00:02:11         present False:                                   OK (0.13s)
+00:02:11         storeKey:                                        OK (0.38s)
+00:02:11         present True:                                    OK (0.21s)
+00:02:11         storeKey when already present:                   OK (0.06s)
+00:02:11         present True:                                    OK (0.18s)
+00:02:11         retrieveKeyFile:                                 OK (0.22s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.20s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.34s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (1.19s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.24s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11       key size 1048576; directory remote chunksize=1048 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.17s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11         storeKey:                                        OK (0.35s)
+00:02:11         present True:                                    OK (0.20s)
+00:02:11         storeKey when already present:                   OK (0.07s)
+00:02:11         present True:                                    OK (0.23s)
+00:02:11         retrieveKeyFile:                                 OK (0.33s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.24s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.26s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.22s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.25s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11       key size 1048576; directory remote chunksize=1048576 encryption=none
+00:02:11         removeKey when not present:                      OK (0.12s)
+00:02:11         present False:                                   OK (0.19s)
+00:02:11         storeKey:                                        OK (0.14s)
+00:02:11         present True:                                    OK (0.19s)
+00:02:11         storeKey when already present:                   OK (0.08s)
+00:02:11         present True:                                    OK (0.17s)
+00:02:11         retrieveKeyFile:                                 OK (0.18s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.15s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.23s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.26s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         removeKey when present:                          OK (0.10s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11       key size 1048576; directory remote chunksize=1048576 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.13s)
+00:02:11         present False:                                   OK (0.18s)
+00:02:11         storeKey:                                        OK (0.07s)
+00:02:11         present True:                                    OK (0.20s)
+00:02:11         storeKey when already present:                   OK (0.09s)
+00:02:11         present True:                                    OK (0.16s)
+00:02:11         retrieveKeyFile:                                 OK (0.17s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.14s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.14s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.10s)
+00:02:11         present False:                                   OK (0.19s)
+00:02:11       key size 1048577; directory remote chunksize=0 encryption=none
+00:02:11         removeKey when not present:                      OK (0.12s)
+00:02:11         present False:                                   OK (0.08s)
+00:02:11         storeKey:                                        OK (0.07s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.08s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.07s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.09s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.07s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.16s)
+00:02:11         present False:                                   OK (0.11s)
+00:02:11       key size 1048577; directory remote chunksize=0 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.08s)
+00:02:11         present False:                                   OK (0.08s)
+00:02:11         storeKey:                                        OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.08s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.08s)
+00:02:11         present False:                                   OK (0.07s)
+00:02:11       key size 1048577; directory remote chunksize=10485 encryption=none
+00:02:11         removeKey when not present:                      OK (0.09s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11         storeKey:                                        OK (2.60s)
+00:02:11         present True:                                    OK (0.19s)
+00:02:11         storeKey when already present:                   OK (0.05s)
+00:02:11         present True:                                    OK (0.21s)
+00:02:11         retrieveKeyFile:                                 OK (0.22s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.12s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.21s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.15s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.12s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11       key size 1048577; directory remote chunksize=10485 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.11s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11         storeKey:                                        OK (2.61s)
+00:02:11         present True:                                    OK (0.18s)
+00:02:11         storeKey when already present:                   OK (0.04s)
+00:02:11         present True:                                    OK (0.21s)
+00:02:11         retrieveKeyFile:                                 OK (0.20s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.18s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.22s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         removeKey when present:                          OK (0.13s)
+00:02:11         present False:                                   OK (0.19s)
+00:02:11       key size 1048577; directory remote chunksize=1048 encryption=none
+00:02:11         removeKey when not present:                      OK (0.18s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11         storeKey:                                        OK (0.40s)
+00:02:11         present True:                                    OK (0.22s)
+00:02:11         storeKey when already present:                   OK (0.07s)
+00:02:11         present True:                                    OK (0.22s)
+00:02:11         retrieveKeyFile:                                 OK (0.32s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.24s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.24s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.18s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.27s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11       key size 1048577; directory remote chunksize=1048 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.18s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11         storeKey:                                        OK (0.41s)
+00:02:11         present True:                                    OK (0.23s)
+00:02:11         storeKey when already present:                   OK (0.06s)
+00:02:11         present True:                                    OK (0.21s)
+00:02:11         retrieveKeyFile:                                 OK (0.28s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.23s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.20s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.23s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11       key size 1048577; directory remote chunksize=1048576 encryption=none
+00:02:11         removeKey when not present:                      OK (0.10s)
+00:02:11         present False:                                   OK (0.18s)
+00:02:11         storeKey:                                        OK (0.09s)
+00:02:11         present True:                                    OK (0.18s)
+00:02:11         storeKey when already present:                   OK (0.04s)
+00:02:11         present True:                                    OK (0.17s)
+00:02:11         retrieveKeyFile:                                 OK (0.20s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.17s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.23s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         removeKey when present:                          OK (0.07s)
+00:02:11         present False:                                   OK (0.14s)
+00:02:11       key size 1048577; directory remote chunksize=1048576 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.11s)
+00:02:11         present False:                                   OK (0.15s)
+00:02:11         storeKey:                                        OK (0.09s)
+00:02:11         present True:                                    OK (0.17s)
+00:02:11         storeKey when already present:                   OK (0.04s)
+00:02:11         present True:                                    OK (0.19s)
+00:02:11         retrieveKeyFile:                                 OK (0.22s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.17s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.27s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.08s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11       key size 1048575; directory remote chunksize=0 encryption=none
+00:02:11         removeKey when not present:                      OK (0.11s)
+00:02:11         present False:                                   OK (0.07s)
+00:02:11         storeKey:                                        OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.03s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.10s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.08s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.14s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.07s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.16s)
+00:02:11         present False:                                   OK (0.09s)
+00:02:11       key size 1048575; directory remote chunksize=0 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.08s)
+00:02:11         present False:                                   OK (0.07s)
+00:02:11         storeKey:                                        OK (0.02s)
+00:02:11         present True:                                    OK (0.01s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.01s)
+00:02:11         retrieveKeyFile:                                 OK (0.08s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.10s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.08s)
+00:02:11         present False:                                   OK (0.08s)
+00:02:11       key size 1048575; directory remote chunksize=10485 encryption=none
+00:02:11         removeKey when not present:                      OK (0.09s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11         storeKey:                                        OK (2.72s)
+00:02:11         present True:                                    OK (0.19s)
+00:02:11         storeKey when already present:                   OK (0.05s)
+00:02:11         present True:                                    OK (0.20s)
+00:02:11         retrieveKeyFile:                                 OK (0.20s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.14s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.16s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.09s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11       key size 1048575; directory remote chunksize=10485 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.11s)
+00:02:11         present False:                                   OK (0.15s)
+00:02:11         storeKey:                                        OK (3.06s)
+00:02:11         present True:                                    OK (0.18s)
+00:02:11         storeKey when already present:                   OK (0.04s)
+00:02:11         present True:                                    OK (0.16s)
+00:02:11         retrieveKeyFile:                                 OK (0.22s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.15s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (1.45s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.42s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.11s)
+00:02:11         present False:                                   OK (0.19s)
+00:02:11       key size 1048575; directory remote chunksize=1048 encryption=none
+00:02:11         removeKey when not present:                      OK (0.19s)
+00:02:11         present False:                                   OK (0.18s)
+00:02:11         storeKey:                                        OK (0.42s)
+00:02:11         present True:                                    OK (0.21s)
+00:02:11         storeKey when already present:                   OK (0.06s)
+00:02:11         present True:                                    OK (0.20s)
+00:02:11         retrieveKeyFile:                                 OK (0.26s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.23s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         removeKey when present:                          OK (0.24s)
+00:02:11         present False:                                   OK (0.14s)
+00:02:11       key size 1048575; directory remote chunksize=1048 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.15s)
+00:02:11         present False:                                   OK (0.15s)
+00:02:11         storeKey:                                        OK (0.41s)
+00:02:11         present True:                                    OK (0.21s)
+00:02:11         storeKey when already present:                   OK (0.06s)
+00:02:11         present True:                                    OK (0.19s)
+00:02:11         retrieveKeyFile:                                 OK (0.25s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.20s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.17s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.25s)
+00:02:11         present False:                                   OK (0.15s)
+00:02:11       key size 1048575; directory remote chunksize=1048576 encryption=none
+00:02:11         removeKey when not present:                      OK (0.09s)
+00:02:11         present False:                                   OK (0.15s)
+00:02:11         storeKey:                                        OK (0.07s)
+00:02:11         present True:                                    OK (0.17s)
+00:02:11         storeKey when already present:                   OK (0.08s)
+00:02:11         present True:                                    OK (0.17s)
+00:02:11         retrieveKeyFile:                                 OK (0.16s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.12s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.14s)
+00:02:11         fsck downloaded object:                          OK (0.02s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.15s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.07s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11       key size 1048575; directory remote chunksize=1048576 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.10s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11         storeKey:                                        OK (0.06s)
+00:02:11         present True:                                    OK (0.18s)
+00:02:11         storeKey when already present:                   OK (0.07s)
+00:02:11         present True:                                    OK (0.15s)
+00:02:11         retrieveKeyFile:                                 OK (0.25s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.14s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.35s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.15s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.08s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11       key size 2097152; directory remote chunksize=0 encryption=none
+00:02:11         removeKey when not present:                      OK (0.10s)
+00:02:11         present False:                                   OK (0.07s)
+00:02:11         storeKey:                                        OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.10s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         removeKey when present:                          OK (0.18s)
+00:02:11         present False:                                   OK (0.10s)
+00:02:11       key size 2097152; directory remote chunksize=0 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.07s)
+00:02:11         present False:                                   OK (0.07s)
+00:02:11         storeKey:                                        OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         storeKey when already present:                   OK (0.02s)
+00:02:11         present True:                                    OK (0.02s)
+00:02:11         retrieveKeyFile:                                 OK (0.12s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.11s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.14s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.13s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         removeKey when present:                          OK (0.06s)
+00:02:11         present False:                                   OK (0.08s)
+00:02:11       key size 2097152; directory remote chunksize=10485 encryption=none
+00:02:11         removeKey when not present:                      OK (0.09s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11         storeKey:                                        OK (5.34s)
+00:02:11         present True:                                    OK (0.19s)
+00:02:11         storeKey when already present:                   OK (0.04s)
+00:02:11         present True:                                    OK (0.18s)
+00:02:11         retrieveKeyFile:                                 OK (0.30s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.18s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (1.02s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.23s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         removeKey when present:                          OK (0.13s)
+00:02:11         present False:                                   OK (0.18s)
+00:02:11       key size 2097152; directory remote chunksize=10485 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.14s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11         storeKey:                                        OK (5.06s)
+00:02:11         present True:                                    OK (0.17s)
+00:02:11         storeKey when already present:                   OK (0.04s)
+00:02:11         present True:                                    OK (0.18s)
+00:02:11         retrieveKeyFile:                                 OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.15s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.18s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.12s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11       key size 2097152; directory remote chunksize=1048 encryption=none
+00:02:11         removeKey when not present:                      OK (0.23s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11         storeKey:                                        OK (0.69s)
+00:02:11         present True:                                    OK (0.24s)
+00:02:11         storeKey when already present:                   OK (0.09s)
+00:02:11         present True:                                    OK (0.25s)
+00:02:11         retrieveKeyFile:                                 OK (0.32s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.28s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.27s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.18s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.40s)
+00:02:11         present False:                                   OK (0.15s)
+00:02:11       key size 2097152; directory remote chunksize=1048 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.21s)
+00:02:11         present False:                                   OK (0.15s)
+00:02:11         storeKey:                                        OK (0.74s)
+00:02:11         present True:                                    OK (0.22s)
+00:02:11         storeKey when already present:                   OK (0.09s)
+00:02:11         present True:                                    OK (0.23s)
+00:02:11         retrieveKeyFile:                                 OK (0.32s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.29s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.26s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.16s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         removeKey when present:                          OK (0.40s)
+00:02:11         present False:                                   OK (0.16s)
+00:02:11       key size 2097152; directory remote chunksize=1048576 encryption=none
+00:02:11         removeKey when not present:                      OK (0.10s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11         storeKey:                                        OK (0.11s)
+00:02:11         present True:                                    OK (0.20s)
+00:02:11         storeKey when already present:                   OK (0.04s)
+00:02:11         present True:                                    OK (0.18s)
+00:02:11         retrieveKeyFile:                                 OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.15s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.20s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.08s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11       key size 2097152; directory remote chunksize=1048576 encryption=shared
+00:02:11         removeKey when not present:                      OK (0.11s)
+00:02:11         present False:                                   OK (0.14s)
+00:02:11         storeKey:                                        OK (0.10s)
+00:02:11         present True:                                    OK (0.21s)
+00:02:11         storeKey when already present:                   OK (0.04s)
+00:02:11         present True:                                    OK (0.21s)
+00:02:11         retrieveKeyFile:                                 OK (0.19s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from 0:                   OK (0.15s)
+00:02:11         fsck downloaded object:                          OK (0.04s)
+00:02:11         retrieveKeyFile resume from 33%:                 OK (0.17s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         retrieveKeyFile resume from end:                 OK (0.24s)
+00:02:11         fsck downloaded object:                          OK (0.03s)
+00:02:11         removeKey when present:                          OK (0.08s)
+00:02:11         present False:                                   OK (0.17s)
+00:02:11       exporttree=yes; key size 1048576; key size 2097152
+00:02:11         check present export when not present:           OK (0.02s)
+00:02:11         remove export when not present:                  OK (0.02s)
+00:02:11         store export:                                    OK (0.02s)
+00:02:11         check present export after store:                OK (0.02s)
+00:02:11         store export when already present:               OK (0.02s)
+00:02:11         retrieve export:                                 OK (0.02s)
+00:02:11         store new content to export:                     OK (0.02s)
+00:02:11         check present export after store of new content: OK (0.02s)
+00:02:11         retrieve export new content:                     OK (0.02s)
+00:02:11         remove export:                                   OK (0.02s)
+00:02:11         check present export after remove:               OK (0.02s)
+00:02:11         retrieve export fails after removal:             OK (0.02s)
+00:02:11         remove export directory:                         OK (0.02s)
+00:02:11         remove export directory that is already removed: OK (0.02s)
+00:02:11       exporttree=yes; key size 1048576; key size 1048575
+00:02:11         check present export when not present:           OK (0.02s)
+00:02:11         remove export when not present:                  OK (0.02s)
+00:02:11         store export:                                    OK (0.02s)
+00:02:11         check present export after store:                OK (0.02s)
+00:02:11         store export when already present:               OK (0.02s)
+00:02:11         retrieve export:                                 OK (0.02s)
+00:02:11         store new content to export:                     OK (0.02s)
+00:02:11         check present export after store of new content: OK (0.02s)
+00:02:11         retrieve export new content:                     OK (0.02s)
+00:02:11         remove export:                                   OK (0.02s)
+00:02:11         check present export after remove:               OK (0.02s)
+00:02:11         retrieve export fails after removal:             OK (0.02s)
+00:02:11         remove export directory:                         OK (0.02s)
+00:02:11         remove export directory that is already removed: OK (0.02s)
+00:02:11       exporttree=yes; key size 1048577; key size 2097152
+00:02:11         check present export when not present:           OK (0.02s)
+00:02:11         remove export when not present:                  OK (0.02s)
+00:02:11         store export:                                    OK (0.02s)
+00:02:11         check present export after store:                OK (0.02s)
+00:02:11         store export when already present:               OK (0.02s)
+00:02:11         retrieve export:                                 OK (0.02s)
+00:02:11         store new content to export:                     OK (0.02s)
+00:02:11         check present export after store of new content: OK (0.02s)
+00:02:11         retrieve export new content:                     OK (0.02s)
+00:02:11         remove export:                                   OK (0.02s)
+00:02:11         check present export after remove:               OK (0.02s)
+00:02:11         retrieve export fails after removal:             OK (0.02s)
+00:02:11         remove export directory:                         OK (0.02s)
+00:02:11         remove export directory that is already removed: OK (0.02s)
+00:02:11       exporttree=yes; key size 1048577; key size 1048575
+00:02:11         check present export when not present:           OK (0.02s)
+00:02:11         remove export when not present:                  OK (0.02s)
+00:02:11         store export:                                    OK (0.02s)
+00:02:11         check present export after store:                OK (0.02s)
+00:02:11         store export when already present:               OK (0.02s)
+00:02:11         retrieve export:                                 OK (0.02s)
+00:02:11         store new content to export:                     OK (0.02s)
+00:02:11         check present export after store of new content: OK (0.02s)
+00:02:11         retrieve export new content:                     OK (0.02s)
+00:02:11         remove export:                                   OK (0.02s)
+00:02:11         check present export after remove:               OK (0.02s)
+00:02:11         retrieve export fails after removal:             OK (0.02s)
+00:02:11         remove export directory:                         OK (0.02s)
+00:02:11         remove export directory that is already removed: OK (0.02s)
+00:02:11 
+00:02:11 All 700 tests passed (109.60s)
+00:02:11 Tests
+00:02:11   Repo Tests v10 adjusted unlocked branch
+00:02:11     Init Tests
+00:02:11       init:                                               OK (5.93s)
+00:02:11       add:                                                OK (3.53s)
+00:02:11     borg remote:                                          OK
+00:02:11     conflict resolution (mixed locked and unlocked file): OK (30.36s)
+00:02:11     transition propagation:                               OK (35.02s)
+00:02:11     describe:                                             OK (1.74s)
+00:02:11     fsck (basics):                                        OK (10.59s)
+00:02:11     move (ssh remote):                                    OK (9.99s)
+00:02:11     import:                                               OK (11.87s)
+00:02:11     add moved link:                                       OK (6.72s)
+00:02:11 
+00:02:11 All 10 tests passed (115.75s)
+00:02:11 Tests
+00:02:11   Repo Tests v10 adjusted unlocked branch
+00:02:11     Init Tests
+00:02:11       init:                                   OK (5.24s)
+00:02:11       add:                                    OK (3.77s)
+00:02:11     bup remote:                               OK (1.25s)
+00:02:11     conflict resolution (nonannexed symlink): OK (45.93s)
+00:02:11     adjusted branch subtree regression:       OK (9.69s)
+00:02:11     unused:                                   OK (27.10s)
+00:02:11     trust:                                    OK (3.43s)
+00:02:11     move:                                     OK (8.07s)
+00:02:11     magic:                                    OK (7.69s)
+00:02:11     add extras:                               OK (4.96s)
+00:02:11 
+00:02:11 All 10 tests passed (117.13s)
+00:02:11 Tests
+00:02:11   Repo Tests v10 adjusted unlocked branch
+00:02:11     Init Tests
+00:02:11       init:              OK (3.18s)
+00:02:11       add:               OK (3.50s)
+00:02:11     gpg crypto:          OK (37.35s)
+00:02:11     map:                 OK (2.20s)
+00:02:11     conflict resolution: OK (29.85s)
+00:02:11     find:                OK (9.66s)
+00:02:11     fsck (bare):         OK (3.97s)
+00:02:11     move (numcopies):    OK (9.35s)
+00:02:11     reinject:            OK (5.44s)
+00:02:11     readonly remote:     OK (19.01s)
+00:02:11 
+00:02:11 All 10 tests passed (123.50s)
+00:02:11 Tests
+00:02:11   Repo Tests v10 adjusted unlocked branch
+00:02:11     Init Tests
+00:02:11       init:                                OK (2.93s)
+00:02:11       add:                                 OK (4.38s)
+00:02:11     sop crypto:                            OK
+00:02:11     uninit:                                OK (11.41s)
+00:02:32     conflict resolution (adjusted branch): OK (24.09s)
+00:02:39     merge:                                 OK (6.56s)
+00:02:45     fsck (local untrusted):                OK (5.89s)
+00:02:52     copy:                                  OK (6.82s)
+00:02:53     unannex (no copy):                     OK (1.62s)
+00:02:58     ignore deleted files:                  OK (4.30s)
+00:02:58 
+00:02:58 All 10 tests passed (68.00s)
+00:02:58 Tests
+00:02:58   Repo Tests v10 adjusted unlocked branch
+00:02:58     Init Tests
+00:02:58       init:                                OK (2.72s)
+00:02:58       add:                                 OK (7.92s)
+00:02:58     preferred content:                     OK (14.79s)
+00:02:58     uninit (in git-annex branch):          OK (3.41s)
+00:02:58     conflict resolution movein regression: OK (26.80s)
+00:02:58     info:                                  OK (3.06s)
+00:02:59     fsck (remote untrusted):               OK (5.03s)
+00:03:10     lock:                                  OK (10.73s)
+00:03:19     unannex (with copy):                   OK (9.18s)
+00:03:26     metadata:                              OK (6.27s)
+00:03:26 
+00:03:26 All 10 tests passed (89.92s)
+00:03:26 Tests
+00:03:26   Repo Tests v10 adjusted unlocked branch
+00:03:26     Init Tests
+00:03:26       init:                          OK (2.93s)
+00:03:26       add:                           OK (4.67s)
+00:03:26     add subdirs:                     OK (8.02s)
+00:03:26     whereis:                         OK (6.51s)
+00:03:26     conflict resolution symlink bit: OK
+00:03:26     sync:                            OK (10.75s)
+00:03:26     conversion git to annexed:       OK (5.91s)
+00:03:26     edit (no pre-commit):            OK (5.62s)
+00:03:26     drop (with remote):              OK (5.75s)
+00:03:26     export and import of subdir:     OK (23.74s)
+00:03:26 
+00:03:26 All 10 tests passed (73.89s)
+00:03:26 Tests
+00:03:26   Repo Tests v10 unlocked
+00:03:26     Init Tests
+00:03:27       init:                                   OK (1.25s)
+00:03:33       add:                                    OK (6.30s)
+00:03:34     bup remote:                               OK (1.09s)
+00:04:06     conflict resolution (nonannexed symlink): OK (31.45s)
+00:04:14     adjusted branch subtree regression:       OK (8.11s)
+00:04:29     unused:                                   OK (14.94s)
+00:04:32     trust:                                    OK (3.19s)
+00:04:39     move:                                     OK (7.26s)
+00:04:45     magic:                                    OK (5.63s)
+00:04:51     add extras:                               OK (6.25s)
+00:04:51 
+00:04:51 All 10 tests passed (85.46s)
+00:04:51 Tests
+00:04:51   Repo Tests v10 adjusted unlocked branch
+00:04:51     Init Tests
+00:04:51       init:                                       OK (2.45s)
+00:04:51       add:                                        OK (5.06s)
+00:04:51     addurl:                                       OK (6.98s)
+00:04:51     hook remote:                                  OK (7.70s)
+00:04:51     conflict resolution (uncommitted local file): OK (29.16s)
+00:04:51     concurrent get of dup key regression:         OK (6.50s)
+00:04:51     conversion annexed to git:                    OK (9.02s)
+00:04:51     edit (pre-commit):                            OK (6.73s)
+00:04:51     drop (untrusted remote):                      OK (5.44s)
+00:04:51     shared clone:                                 OK (1.43s)
+00:04:51 
+00:04:51 All 10 tests passed (80.47s)
+00:04:51 Tests
+00:04:51   Repo Tests v10 adjusted unlocked branch
+00:04:51     Init Tests
+00:04:51       init:                                         OK (2.53s)
+00:04:51       add:                                          OK (8.21s)
+00:04:51     required_content:                               OK (9.21s)
+00:04:51     upgrade:                                        OK (1.94s)
+00:04:51     conflict resolution (mixed directory and file): OK (48.44s)
+00:04:51     version:                                        OK (1.57s)
+00:04:51     fsck --from remote:                             OK (1.53s)
+00:04:51     lock --force:                                   OK (9.83s)
+00:04:51     drop (no remote):                               OK (5.68s)
+00:04:51     export and import:                              OK (41.10s)
+00:04:51 
+00:04:51 All 10 tests passed (130.05s)
+00:04:51 Tests
+00:04:51   Repo Tests v10 unlocked
+00:04:51     Init Tests
+00:04:51       init:                                               OK (1.25s)
+00:04:51       add:                                                OK (6.16s)
+00:04:51     borg remote:                                          OK
+00:04:51     conflict resolution (mixed locked and unlocked file): OK (21.40s)
+00:04:51     transition propagation:                               OK (15.88s)
+00:04:51     describe:                                             OK (2.29s)
+00:04:51     fsck (basics):                                        OK (7.56s)
+00:04:51     move (ssh remote):                                    OK (6.27s)
+00:04:51     import:                                               OK (6.07s)
+00:04:51     add moved link:                                       OK (5.98s)
+00:04:51 
+00:04:51 All 10 tests passed (72.87s)
+00:04:51 Tests
+00:04:51   Repo Tests v10 unlocked
+00:04:51     Init Tests
+00:04:53       init:                                OK (1.31s)
+00:04:58       add:                                 OK (5.87s)
+00:05:11     preferred content:                     OK (12.37s)
+00:05:13     uninit (in git-annex branch):          OK (2.62s)
+00:05:35     conflict resolution movein regression: OK (21.24s)
+00:05:38     info:                                  OK (2.99s)
+00:05:43     fsck (remote untrusted):               OK (5.54s)
+00:05:58     lock:                                  OK (15.32s)
+00:06:04     unannex (with copy):                   OK (5.59s)
+00:06:09     metadata:                              OK (5.08s)
+00:06:09 
+00:06:09 All 10 tests passed (77.91s)
+00:06:09 Tests
+00:06:09   Repo Tests v10 unlocked
+00:06:09     Init Tests
+00:06:09       init:                                OK (1.14s)
+00:06:09       add:                                 OK (7.19s)
+00:06:09     rsync remote:                          OK (8.40s)
+00:06:09     conflict resolution (nonannexed file): OK (30.73s)
+00:06:09     adjusted branch merge regression:      OK (19.11s)
+00:06:09     migrate (via gitattributes):           OK (11.42s)
+00:06:09     fix:                                   OK (1.26s)
+00:06:09     get (ssh remote):                      OK (6.66s)
+00:06:09     view:                                  OK (3.02s)
+00:06:09     add dup:                               OK (4.73s)
+00:06:09 
+00:06:09 All 10 tests passed (93.68s)
+00:06:09 Tests
+00:06:09   Repo Tests v10 adjusted unlocked branch
+00:06:09     Init Tests
+00:06:09       init:                             OK (2.28s)
+00:06:09       add:                              OK (4.03s)
+00:06:09     repair:                             OK (1.66s)
+00:06:09     directory remote:                   OK (9.53s)
+00:06:09     conflict resolution (removed file): OK (61.18s)
+00:06:09     union merge regression:             OK (31.17s)
+00:06:09     migrate:                            OK (11.39s)
+00:06:09     partial commit:                     OK (6.59s)
+00:06:09     get:                                OK (5.34s)
+00:06:09     log:                                OK (1.55s)
+00:06:09 
+00:06:09 All 10 tests passed (134.74s)
+00:06:09 Tests
+00:06:09   Repo Tests v10 unlocked
+00:06:09     Init Tests
+00:06:09       init:              OK (1.35s)
+00:06:09       add:               OK (6.53s)
+00:06:09     gpg crypto:          OK (29.23s)
+00:06:09     map:                 OK (1.51s)
+00:06:09     conflict resolution: OK (16.39s)
+00:06:09     find:                OK (5.81s)
+00:06:09     fsck (bare):         OK (1.31s)
+00:06:09     move (numcopies):    OK (9.28s)
+00:06:09     reinject:            OK (6.18s)
+00:06:09     readonly remote:     OK (9.94s)
+00:06:09 
+00:06:09 All 10 tests passed (87.53s)
+00:06:09 Tests
+00:06:09   Repo Tests v10 unlocked
+00:06:09     Init Tests
+00:06:09       init:                                OK (1.21s)
+00:06:09       add:                                 OK (7.16s)
+00:06:09     sop crypto:                            OK
+00:06:09     uninit:                                OK (6.50s)
+00:06:09     conflict resolution (adjusted branch): OK (20.03s)
+00:06:09     merge:                                 OK (1.68s)
+00:06:09     fsck (local untrusted):                OK (4.74s)
+00:06:09     copy:                                  OK (7.69s)
+00:06:09     unannex (no copy):                     OK (1.93s)
+00:06:09     ignore deleted files:                  OK (4.17s)
+00:06:09 
+00:06:09 All 10 tests passed (55.11s)
+00:06:09 Tests
+00:06:09   Repo Tests v10 unlocked
+00:06:09     Init Tests
+00:06:09       init:                                         OK (1.27s)
+00:06:09       add:                                          OK (5.97s)
+00:06:09     required_content:                               OK (8.26s)
+00:06:09     upgrade:                                        OK (1.22s)
+00:06:09     conflict resolution (mixed directory and file): OK (34.12s)
+00:06:09     version:                                        OK (1.87s)
+00:06:09     fsck --from remote:                             OK (2.72s)
+00:06:09     lock --force:                                   OK (7.24s)
+00:06:09     drop (no remote):                               OK (5.50s)
+00:06:26     export and import:                              OK (24.72s)
+00:06:26 
+00:06:26 All 10 tests passed (92.91s)
+00:06:26 Tests
+00:06:26   Repo Tests v10 unlocked
+00:06:26     Init Tests
+00:06:26       init:                          OK (2.80s)
+00:06:26       add:                           OK (6.13s)
+00:06:26     add subdirs:                     OK (4.80s)
+00:06:26     whereis:                         OK (6.10s)
+00:06:26     conflict resolution symlink bit: OK
+00:06:26     sync:                            OK (5.96s)
+00:06:26     conversion git to annexed:       OK (5.70s)
+00:06:26     edit (no pre-commit):            OK (8.59s)
+00:06:26     drop (with remote):              OK (6.22s)
+00:06:26     export and import of subdir:     OK (16.88s)
+00:06:26 
+00:06:26 All 10 tests passed (63.18s)
+00:06:26 Tests
+00:06:26   Repo Tests v10 unlocked
+00:06:26     Init Tests
+00:06:26       init:                                       OK (1.10s)
+00:06:26       add:                                        OK (6.43s)
+00:06:26     addurl:                                       OK (3.45s)
+00:06:26     hook remote:                                  OK (10.72s)
+00:06:26     conflict resolution (uncommitted local file): OK (11.39s)
+00:06:26     concurrent get of dup key regression:         OK (7.89s)
+00:06:26     conversion annexed to git:                    OK (8.06s)
+00:06:31     edit (pre-commit):                            OK (6.88s)
+00:06:37     drop (untrusted remote):                      OK (6.25s)
+00:06:39     shared clone:                                 OK (1.96s)
+00:06:39 
+00:06:39 All 10 tests passed (64.12s)
+00:06:39 Tests
+00:06:39   Repo Tests v10 locked
+00:06:39     Init Tests
+00:06:41       init:              OK (1.99s)
+00:06:47       add:               OK (5.74s)
+00:07:45     gpg crypto:          OK (58.17s)
+00:07:47     map:                 OK (1.63s)
+00:08:13     conflict resolution: OK (26.53s)
+00:08:21     find:                OK (8.43s)
+00:08:23     fsck (bare):         OK (1.65s)
+00:08:39     move (numcopies):    OK (16.19s)
+00:08:45     reinject:            OK (5.63s)
+00:08:59     readonly remote:     OK (13.79s)
+00:08:59 
+00:08:59 All 10 tests passed (139.75s)
+00:08:59 Tests
+00:08:59   Repo Tests v10 unlocked
+00:08:59     Init Tests
+00:08:59       init:                             OK (1.27s)
+00:08:59       add:                              OK (7.83s)
+00:08:59     repair:                             OK (2.02s)
+00:08:59     directory remote:                   OK (9.55s)
+00:08:59     conflict resolution (removed file): OK (33.97s)
+00:08:59     union merge regression:             OK (38.00s)
+00:08:59     migrate:                            OK (22.65s)
+00:08:59     partial commit:                     OK (9.31s)
+00:08:59     get:                                OK (7.86s)
+00:08:59     log:                                OK (1.84s)
+00:08:59 
+00:08:59 All 10 tests passed (134.30s)
+00:08:59 Tests
+00:08:59   Repo Tests v10 locked
+00:08:59     Init Tests
+00:08:59       init:                                   OK (1.15s)
+00:08:59       add:                                    OK (5.44s)
+00:08:59     bup remote:                               OK (1.18s)
+00:08:59     conflict resolution (nonannexed symlink): OK (19.27s)
+00:08:59     adjusted branch subtree regression:       OK (27.33s)
+00:08:59     unused:                                   OK (21.18s)
+00:08:59     trust:                                    OK (4.53s)
+00:08:59     move:                                     OK (10.40s)
+00:08:59     magic:                                    OK (6.45s)
+00:08:59     add extras:                               OK (14.04s)
+00:08:59 
+00:08:59 All 10 tests passed (110.97s)
+00:08:59 Tests
+00:08:59   Repo Tests v10 locked
+00:08:59     Init Tests
+00:08:59       init:                                               OK (1.13s)
+00:08:59       add:                                                OK (4.81s)
+00:08:59     borg remote:                                          OK
+00:08:59     conflict resolution (mixed locked and unlocked file): OK (19.06s)
+00:08:59     transition propagation:                               OK (39.06s)
+00:08:59     describe:                                             OK (2.80s)
+00:08:59     fsck (basics):                                        OK (11.05s)
+00:08:59     move (ssh remote):                                    OK (8.93s)
+00:08:59     import:                                               OK (17.75s)
+00:08:59     add moved link:                                       OK (7.36s)
+00:08:59 
+00:08:59 All 10 tests passed (111.95s)
+00:08:59 Tests
+00:08:59   Repo Tests v10 locked
+00:08:59     Init Tests
+00:08:59       init:                                OK (1.16s)
+00:08:59       add:                                 OK (4.00s)
+00:08:59     rsync remote:                          OK (10.94s)
+00:08:59     conflict resolution (nonannexed file): OK (23.31s)
+00:08:59     adjusted branch merge regression:      OK (47.72s)
+00:08:59     migrate (via gitattributes):           OK (12.82s)
+00:08:59     fix:                                   OK (17.56s)
+00:08:59     get (ssh remote):                      OK (7.70s)
+00:08:59     view:                                  OK (4.50s)
+00:08:59     add dup:                               OK (4.59s)
+00:08:59 
+00:08:59 All 10 tests passed (134.32s)
+00:08:59 Tests
+00:08:59   Repo Tests v10 locked
+00:08:59     Init Tests
+00:08:59       init:                                OK (11.05s)
+00:08:59       add:                                 OK (4.86s)
+00:08:59     sop crypto:                            OK
+00:08:59     uninit:                                OK (10.25s)
+00:08:59     conflict resolution (adjusted branch): OK (26.15s)
+00:08:59     merge:                                 OK (1.79s)
+00:08:59     fsck (local untrusted):                OK (6.64s)
+00:09:04     copy:                                  OK (8.44s)
+00:09:05     unannex (no copy):                     OK (1.91s)
+00:09:15     ignore deleted files:                  OK (9.75s)
+00:09:15 
+00:09:15 All 10 tests passed (80.84s)
+00:09:15 Tests
+00:09:15   Repo Tests v10 locked
+00:09:15     Init Tests
+00:09:15       init:                                OK (1.61s)
+00:09:15       add:                                 OK (4.29s)
+00:09:15     preferred content:                     OK (17.78s)
+00:09:15     uninit (in git-annex branch):          OK (3.35s)
+00:09:15     conflict resolution movein regression: OK (33.48s)
+00:09:15     info:                                  OK (7.91s)
+00:09:22     fsck (remote untrusted):               OK (7.28s)
+00:09:41     lock:                                  OK (18.65s)
+00:09:52     unannex (with copy):                   OK (11.21s)
+00:09:58     metadata:                              OK (5.59s)
+00:09:58 
+00:09:58 All 10 tests passed (111.15s)
+00:09:58 Tests
+00:09:58   Repo Tests v10 locked
+00:09:58     Init Tests
+00:09:58       init:                                         OK (1.88s)
+00:09:58       add:                                          OK (4.45s)
+00:09:58     required_content:                               OK (14.67s)
+00:09:58     upgrade:                                        OK (1.74s)
+00:09:58     conflict resolution (mixed directory and file): OK (34.35s)
+00:09:58     version:                                        OK (1.46s)
+00:09:58     fsck --from remote:                             OK (1.68s)
+00:09:58     lock --force:                                   OK (13.13s)
+00:09:58     drop (no remote):                               OK (7.23s)
+00:10:08     export and import:                              OK (28.73s)
+00:10:08 
+00:10:08 All 10 tests passed (109.33s)
+00:10:08 Tests
+00:10:08   Repo Tests v10 locked
+00:10:08     Init Tests
+00:10:08       init:                          OK (1.90s)
+00:10:08       add:                           OK (4.63s)
+00:10:08     add subdirs:                     OK (10.45s)
+00:10:08     whereis:                         OK (7.47s)
+00:10:08     conflict resolution symlink bit: OK (15.23s)
+00:10:08     sync:                            OK (12.21s)
+00:10:08     conversion git to annexed:       OK (4.03s)
+00:10:08     edit (no pre-commit):            OK (12.42s)
+00:10:08     drop (with remote):              OK (8.21s)
+00:10:08     export and import of subdir:     OK (20.76s)
+00:10:08 
+00:10:08 All 10 tests passed (97.31s)
+00:10:08 Tests
+00:10:08   Repo Tests v10 locked
+00:10:08     Init Tests
+00:10:08       init:                                       OK (1.49s)
+00:10:08       add:                                        OK (3.78s)
+00:10:08     addurl:                                       OK (3.96s)
+00:10:08     hook remote:                                  OK (13.35s)
+00:10:08     conflict resolution (uncommitted local file): OK (13.21s)
+00:10:08     concurrent get of dup key regression:         OK (13.60s)
+00:10:08     conversion annexed to git:                    OK (9.77s)
+00:10:08     edit (pre-commit):                            OK (8.56s)
+00:10:12     drop (untrusted remote):                      OK (5.69s)
+00:10:13     shared clone:                                 OK (1.16s)
+00:10:13 
+00:10:13 All 10 tests passed (74.56s)
+00:10:13 Tests
+00:10:13   Repo Tests v10 locked
+00:10:13     Init Tests
+00:10:13       init:                             OK (1.32s)
+00:10:13       add:                              OK (3.73s)
+00:10:13     repair:                             OK (1.91s)
+00:10:13     directory remote:                   OK (11.79s)
+00:10:14     conflict resolution (removed file): OK (39.60s)
+00:10:33     union merge regression:             OK (19.21s)
+00:10:41     migrate:                            OK (8.42s)
+00:10:48     partial commit:                     OK (6.89s)
+00:10:57     get:                                OK (8.36s)
+00:10:58     log:                                OK (1.48s)
+00:10:58 
+00:10:58 All 10 tests passed (102.73s)
+00:11:02 
+00:11:02 All tests succeeded. (Ran 32 test groups in 11m2s)
++ echo 'Elapsed time: 662 seconds'
+Elapsed time: 662 seconds
++ cd /mnt/datasets/datalad/git-annex-build-client
++ chmod -R +w 1638
++ rm -rf 1638
