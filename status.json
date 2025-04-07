@@ -13,7 +13,7 @@
         }
     },
     "openmind7": {
-        "highest_build": 1867,
+        "highest_build": 1868,
         "tests": {
             "git-annex-home": "passing",
             "git-annex-om2": "passing"
